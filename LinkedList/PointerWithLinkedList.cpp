@@ -91,25 +91,28 @@ class LinkedList : public Node
           }
           curr = head;
           curr1 = head;
-          while (curr != NULL)
+          while (curr1 != NULL)
           {
-            if(curr->next->data == val )
+            if(curr1->next->data == val )
             {
-
+                curr = curr1;
                 curr1 = curr->next;
                 curr->next = curr1->next;
+                
+                curr1->next = NULL;
                 delete curr1;
                 return;
             }
-            if(curr->data == val)
+            if(curr1->data == val)
             {
-                curr->next = head;
-                curr1 = curr->next;
-                delete curr;
-                return;
+                head = curr1->next;
+                curr = curr1->next;
+
+                delete curr1;
+                return ;
             }
             
-            curr = curr->next;
+            curr1 = curr1->next;
             
           }
         }
